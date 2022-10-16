@@ -1,7 +1,15 @@
 {
   "name": "wave-manager",
+  "description": "wave-manager is a simple time manager which will help organise your time and help you reach your goals",
+  "author": {
+    "name": "Oleg Golevitch",
+    "email": "lemopidr1@gmail.com"
+  },
   "version": "0.1.0",
   "private": true,
+  "bugs": {
+    "email": "oleg133766@gmail.com"
+  },
   "scripts": {
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build",
@@ -38,5 +46,14 @@
   },
   "gitHooks": {
     "pre-commit": "lint-staged"
-  }
+  },
+  "keywords": [
+    "vue",
+    "vuejs",
+    "vue-2",
+    "typescript",
+    "ts",
+    "axios",
+    "jwt"
+  ]
 }
