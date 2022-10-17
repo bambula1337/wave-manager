@@ -21,5 +21,7 @@ export default Vue.extend({
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #2c3e50;
+  background: url("@/assets/images/waves.png") no-repeat center 120%;
+  background-size: 100vw;
 }
 </style>

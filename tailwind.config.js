@@ -47,15 +47,11 @@ module.exports = {
       purple: colors.violet,
       pink: colors.pink,
 
-      'project-first': '#7F5AF0',
-      'project-second': '#2FD9FF',
-      'project-background': '#16161A',
-      'project-secondaire': '#72757E',
+      'project-background': '#004C77',
       'project-title': '#FFFFFF',
-      'project-stroke': '#010101',
-      'project-principal': '#FFFFFF',
-      'project-paragraph': '#94A1B2',
-      'project-highlight': '#7F5AF0',
+      'project-stroke': '#FFFFFF',
+      'project-paragraph': '#FFFFFF',
+      'project-highlight': '#2386D8',
     },
     spacing: {
       px: '1px',
@@ -691,11 +687,11 @@ module.exports = {
       prose: '65ch',
       ...breakpoints(theme('screens')),
     }),
-    minHeight: {
-      0: '0px',
+    minHeight: (theme) => ({
+      ...theme('spacing'),
       full: '100%',
       screen: '100vh',
-    },
+    }),
     minWidth: {
       0: '0px',
       full: '100%',

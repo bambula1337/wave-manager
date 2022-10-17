@@ -13,5 +13,6 @@ module.exports = {
     '@typescript-eslint/no-inferrable-types': 'off',
     'max-len': ['error', { code: 9999 }],
     'global-require': 0,
+    'no-param-reassign': 0,
   },
 };
