@@ -10,6 +10,26 @@
         </label>
       </div>
     </div>
+    <div class="list-wrapper">
+      <label for="name">
+        <textarea @input="heightFixer($event.target)" name="" id="name" class="name"></textarea>
+      </label>
+      <div class="list">
+        <label for="goal">
+          <textarea @input="heightFixer($event.target)" name="" id="goal" class="goal" :readonly="false"></textarea>
+        </label>
+      </div>
+    </div>
+    <div class="list-wrapper">
+      <label for="name">
+        <textarea @input="heightFixer($event.target)" name="" id="name" class="name"></textarea>
+      </label>
+      <div class="list">
+        <label for="goal">
+          <textarea @input="heightFixer($event.target)" name="" id="goal" class="goal" :readonly="false"></textarea>
+        </label>
+      </div>
+    </div>
   </div>
 </template>
 
@@ -29,15 +49,16 @@ export default Vue.extend({
 
 <style lang="scss" scoped>
 .manager {
-  @apply text-project-paragraph font-project-default font-semibold mb-50 px-30;
+  @apply flex flex-wrap text-project-paragraph font-project-default font-semibold mb-40 px-30 mt-20;
   & .list-wrapper{
-    @apply border-4 border-project-stroke;
+    @apply w-%50 flex flex-col flex-grow border-4 border-project-stroke;
     & .name {
-      @apply w-%30 text-center bg-project-background outline-none resize-none text-xl border-4 border-project-stroke overflow-hidden -mt-0.5;
+      @apply w-full h-18 text-center bg-project-background outline-none resize-none text-2xl border-b-4 border-project-stroke overflow-hidden px-10 py-5;
     }
     & .list{
+      @apply px-10 my-5;
       & .goal{
-        @apply w-%30 bg-project-background outline-none resize-none text-xl;
+        @apply w-full min-h-14 bg-project-background outline-none resize-none text-xl;
       }
     }
   }
