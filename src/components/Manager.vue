@@ -31,6 +31,11 @@
   </div>
 </template>
 
+<!--TODO: Delete goal
+          Add List
+          Hover Animations
+          State of goal-->
+
 <script lang="ts">
 import Vue from 'vue';
 
