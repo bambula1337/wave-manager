@@ -1,21 +1,22 @@
 <template>
   <div class="manager">
-    <transition-group name="lists-animation" class="transition-wrapper" tag="div">
-      <div class="list-wrapper" v-for="list in lists" :key="list.id">
+    <transition-group name="lists-animation" class="transition-wrapper" tag="div"
+                      @before-leave="beforeLeave">
+      <div class="list-wrapper" v-for="(list, index) in lists" :key="list.id">
         <div class="list">
           <div class="name-wrapper">
             <label for="name">
           <textarea @input="heightFixer($event.target)" name="" id="name" class="name"
                     placeholder="Name" v-model="list.name"></textarea>
             </label>
-            <div class="delete-wrapper" @click="deleteList(lists, list.id-1)"
+            <div class="delete-wrapper" @click="deleteList(lists, index)"
                  @keydown.ctrl="deleteList(lists, list.id)">
               <img src="@/assets/icons/cross.svg" alt="" class="icon">
             </div>
           </div>
           <div class="list">
-            <div class="goal-wrapper">
-              <label for="goal" v-for="goal in list.goals" :key="goal.id">
+            <div class="goal-wrapper" v-for="goal in list.goals" :key="goal.id">
+              <label for="goal">
           <textarea @input="heightFixer($event.target)" name="" id="goal" class="goal"
                     :readonly="false" placeholder="Text" v-model="goal.text"></textarea>
               </label>
@@ -34,7 +35,11 @@
 <!--TODO: Delete goal
           Add List
           Hover Animations
-          State of goal-->
+          State of goal
+          Fix all animations
+          Create List Component
+          Re-design Component
+          Refactor the whole Component-->
 
 <script lang="ts">
 import Vue from 'vue';
@@ -90,8 +95,8 @@ export default Vue.extend({
         },
       );
     },
-    deleteList(list: never[], id: number): void {
-      list.splice(id, 1);
+    deleteList(list: never[], index: number): void {
+      list.splice(index, 1);
     },
   },
 });
@@ -121,9 +126,12 @@ export default Vue.extend({
         & .list {
           @apply flex flex-col h-%50 pl-10 my-5 mb-15;
 
-          & .goal {
-            @apply w-full bg-project-background outline-none resize-none text-xl pr-22 mb-5 h-7;
+          & .goal-wrapper {
+            @apply w-full flex;
+          }
 
+          & .goal {
+            @apply bg-project-background outline-none resize-none text-xl pr-22 mb-5 h-7;
           }
 
           & .add-wrapper {
@@ -147,7 +155,10 @@ export default Vue.extend({
 }
 
 /* apply transition to moving elements */
-.lists-animation-enter-active,
+.lists-animation-enter-active {
+  transition: all 1s;
+}
+
 .lists-animation-leave-active {
   transition: all 1s;
 }
@@ -157,9 +168,8 @@ export default Vue.extend({
   opacity: 0;
 }
 
-/* ensure leaving items are taken out of layout flow so that moving
-   animations can be calculated correctly. */
 .lists-animation-leave-active {
   position: absolute;
 }
+
 </style>
