@@ -39,7 +39,8 @@
           Fix all animations
           Create List Component
           Re-design Component
-          Refactor the whole Component-->
+          Refactor the whole Component
+          Connect Vuex-->
 
 <script lang="ts">
 import Vue from 'vue';
