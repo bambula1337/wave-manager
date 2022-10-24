@@ -1,29 +1,52 @@
 <template>
   <div class="manager">
-    <transition-group name="lists-animation" class="transition-wrapper" tag="div"
-                      @before-leave="beforeLeave">
+    <transition-group
+      name="lists-animation"
+      class="transition-wrapper"
+      tag="div"
+      @before-leave="beforeLeave"
+    >
       <div class="list-wrapper" v-for="(list, index) in lists" :key="list.id">
         <div class="list">
           <div class="name-wrapper">
             <label for="name">
-          <textarea @input="heightFixer($event.target)" name="" id="name" class="name"
-                    placeholder="Name" v-model="list.name"></textarea>
+              <textarea
+                @input="heightFixer($event.target)"
+                name=""
+                id="name"
+                class="name"
+                placeholder="Name"
+                v-model="list.name"
+              ></textarea>
             </label>
-            <div class="delete-wrapper" @click="deleteList(lists, index)"
-                 @keydown.ctrl="deleteList(lists, list.id)">
-              <img src="@/assets/icons/cross.svg" alt="" class="icon">
+            <div
+              class="delete-wrapper"
+              @click="deleteList(lists, index)"
+              @keydown.ctrl="deleteList(lists, list.id)"
+            >
+              <img src="@/assets/icons/cross.svg" alt="" class="icon" />
             </div>
           </div>
           <div class="list">
             <div class="goal-wrapper" v-for="goal in list.goals" :key="goal.id">
               <label for="goal">
-          <textarea @input="heightFixer($event.target)" name="" id="goal" class="goal"
-                    :readonly="false" placeholder="Text" v-model="goal.text"></textarea>
+                <textarea
+                  @input="heightFixer($event.target)"
+                  name=""
+                  id="goal"
+                  class="goal"
+                  :readonly="false"
+                  placeholder="Text"
+                  v-model="goal.text"
+                ></textarea>
               </label>
             </div>
-            <div class="add-wrapper" @click="createGoal(list.goals)"
-                 @keydown.enter="createGoal(list.goals)">
-              <img src="@/assets/icons/cross.svg" alt="" class="icon">
+            <div
+              class="add-wrapper"
+              @click="createGoal(list.goals)"
+              @keydown.enter="createGoal(list.goals)"
+            >
+              <img src="@/assets/icons/cross.svg" alt="" class="icon" />
             </div>
           </div>
         </div>
@@ -89,12 +112,10 @@ export default Vue.extend({
       el.style.height = `${el.scrollHeight}px`;
     },
     createGoal(list: object[]): void {
-      list.push(
-        {
-          id: list.length + 1,
-          text: '',
-        },
-      );
+      list.push({
+        id: list.length + 1,
+        text: '',
+      });
     },
     deleteList(list: never[], index: number): void {
       list.splice(index, 1);
@@ -152,7 +173,6 @@ export default Vue.extend({
 //}
 .lists-animation-move {
   transition: all 0.7s;
-
 }
 
 /* apply transition to moving elements */
@@ -172,5 +192,4 @@ export default Vue.extend({
 .lists-animation-leave-active {
   position: absolute;
 }
-
 </style>
